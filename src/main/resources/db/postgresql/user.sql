@@ -6,6 +6,7 @@ CREATE DATABASE IF NOT EXISTS petclinic;
 
 CREATE USER roach;
 
---CREATE USER roach WITH PASSWORD 'petclinic';
+GRANT all on DATABASE petclinic to roach;
 
+--CREATE USER roach WITH PASSWORD 'petclinic';
 --GRANT ALL PRIVILEGES ON petclinic.* TO 'petclinic@%' IDENTIFIED BY 'petclinic';

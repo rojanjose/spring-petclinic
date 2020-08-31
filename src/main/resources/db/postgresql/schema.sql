@@ -1,3 +1,6 @@
+--Schema statements optimized for CockroachDB
+
+
 DROP TABLE IF EXISTS visits;
 DROP TABLE IF EXISTS pets;
 DROP TABLE IF EXISTS owners;
@@ -5,6 +8,8 @@ DROP TABLE IF EXISTS types;
 DROP TABLE IF EXISTS vet_specialties;
 DROP TABLE IF EXISTS specialties;
 DROP TABLE IF EXISTS vets;
+
+DROP SEQUENCE owners_id_seq;
 
 CREATE TABLE vets (
 	id serial,
@@ -40,7 +45,7 @@ CREATE TABLE types (
 CREATE INDEX idx_types_name ON types (name);
 
 CREATE TABLE owners (
-	id serial,
+	id smallserial,
 	first_name character varying(30),
 	last_name character varying(30),
 	address character varying(255),
@@ -49,6 +54,7 @@ CREATE TABLE owners (
 	CONSTRAINT pk_owners PRIMARY KEY (id)
 );
 --ALTER SEQUENCE owners_id_seq restart with 11;
+CREATE SEQUENCE owners_id_seq start with 11;
 CREATE INDEX idx_owners_last_name ON owners (last_name);
 
 CREATE TABLE pets (
